@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" >
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bookmarklet Maker</title>
+
+<style>
+textarea {
+  width: 30em;
+  height: 15em;
+}
+</style>
+
+</head>
+<body>
+<h1>Bookmarklet Maker</h1>
+
+<a id="bookmarklet" href="">Bookmarklet</a>
+<br>
+
+<textarea id="code" oninput="handleInput(this)"></textarea>
+
+<script>
+function handleInput() {
+  const textarea = document.getElementById('code')
+  const code = encodeURI(`(function() { ${textarea.value.trim()} })()`)
+
+  document.getElementById('bookmarklet').href = `javascript:${code}`
+}
+handleInput()
+</script>
+
+</body>
+</html>
